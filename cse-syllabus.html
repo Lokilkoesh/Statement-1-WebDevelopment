@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Engineering Syllabus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff; /* White */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #5cb85c; /* Green */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #4cae4c; /* Darker green */
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: red;
+        }
+
+        .upload-section {
+            margin-top: 20px;
+        }
+
+        .upload-section label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Computer Science Engineering Syllabus</h1>
+    <form id="syllabusForm">
+        <h2>Theory Courses (Select at least 4):</h2>
+        <ul>
+            <li>
+                <label><input type="checkbox" name="theory" value="Mathematics I" onclick="toggleUpload('math')"> Mathematics I</label>
+                <div class="upload-section" id="math" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+            <li>
+                <label><input type="checkbox" name="theory" value="Data Structures" onclick="toggleUpload('data-structures')"> Data Structures</label>
+                <div class="upload-section" id="data-structures" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+            <li>
+                <label><input type="checkbox" name="theory" value="Digital Logic Design" onclick="toggleUpload('digital-logic')"> Digital Logic Design</label>
+                <div class="upload-section" id="digital-logic" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+            <li>
+                <label><input type="checkbox" name="theory" value="Operating Systems" onclick="toggleUpload('operating-systems')"> Operating Systems</label>
+                <div class="upload-section" id="operating-systems" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+            <li>
+                <label><input type="checkbox" name="theory" value="Database Management Systems" onclick="toggleUpload('dbms')"> Database Management Systems</label>
+                <div class="upload-section" id="dbms" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+            <li>
+                <label><input type="checkbox" name="theory" value="Software Engineering" onclick="toggleUpload('software-engineering')"> Software Engineering</label>
+                <div class="upload-section" id="software-engineering" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Lab Courses (Select at least 2):</h2>
+        <ul>
+            <li>
+                <label><input type="checkbox" name="labs" value="Programming Lab" onclick="toggleUpload('programming-lab')"> Programming Lab</label>
+                <div class="upload-section" id="programming-lab" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+            <li>
+                <label><input type="checkbox" name="labs" value="Data Structures Lab" onclick="toggleUpload('data-structures-lab')"> Data Structures Lab</label>
+                <div class="upload-section" id="data-structures-lab" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+            <li>
+                <label><input type="checkbox" name="labs" value="Database Lab" onclick="toggleUpload('database-lab')"> Database Lab</label>
+                <div class="upload-section" id="database-lab" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+            <li>
+                <label><input type="checkbox" name="labs" value="Operating Systems Lab" onclick="toggleUpload('os-lab')"> Operating Systems Lab</label>
+                <div class="upload-section" id="os-lab" style="display:none;">
+                    <label>PDF Link: <input type="text" placeholder="Enter PDF link"></label>
+                    <label>Video Link: <input type="text" placeholder="Enter Video link"></label>
+                </div>
+            </li>
+        </ul>
+        
+        <button type="button" onclick="submitForm()">Submit Selection</button>
+    </form>
+    <div class="message" id="message"></div>
+    <div style="text-align: center;">
+        <a href="index.html">Back to Department Selection</a>
+    </div>
+</div>
+
+<script>
+    function toggleUpload(id) {
+        const uploadSection = document.getElementById(id);
+        uploadSection.style.display = uploadSection.style.display === "none" ? "block" : "none";
+    }
+
+    function submitForm() {
+        const theoryCourses = document.querySelectorAll('input[name="theory"]:checked');
+        const labCourses = document.querySelectorAll('input[name="labs"]:checked');
+        
+        if (theoryCourses.length < 4) {
+            document.getElementById('message').innerText = "Please select at least 4 theory courses.";
+            return;
+        }
+
+        if (labCourses.length < 2) {
+            document.getElementById('message').innerText = "Please select at least 2 lab courses.";
+            return;
+        }
+
+        // Gather selected courses and uploads
+        const selectedCourses = {
+            theory: [],
+            labs: [],
+            uploads: {}
+        };
+
+        theoryCourses.forEach(course => {
+            selectedCourses.theory.push(course.value);
+            const uploadId = course.value.replace(/\s/g, '-').toLowerCase(); // Convert course name to id
+            const pdfLink = document.querySelector(`#${uploadId} input[type="text"]:nth-child(1)`).value;
+            const videoLink = document.querySelector(`#${uploadId} input[type="text"]:nth-child(2)`).value;
+            selectedCourses.uploads[course.value] = { pdf: pdfLink, video: videoLink };
+        });
+
+        labCourses.forEach(course => {
+            selectedCourses.labs.push(course.value);
+            const uploadId = course.value.replace(/\s/g, '-').toLowerCase(); // Convert lab name to id
+            const pdfLink = document.querySelector(`#${uploadId} input[type="text"]:nth-child(1)`).value;
+            const videoLink = document.querySelector(`#${uploadId} input[type="text"]:nth-child(2)`).value;
+            selectedCourses.uploads[course.value] = { pdf: pdfLink, video: videoLink };
+        });
+
+        // Store the selected courses in localStorage and redirect to display page
+        localStorage.setItem('selectedCourses', JSON.stringify(selectedCourses));
+        window.location.href = 'display-syllabus.html';
+    }
+</script>
+
+</body>
+</html>

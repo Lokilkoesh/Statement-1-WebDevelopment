@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Syllabus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff5f5; /* Light pink */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff; /* White */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d63e3e; /* Darker pink */
+        }
+
+        h2 {
+            color: #3e6e7f; /* Darker blue */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f0f8ff; /* Light blue */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #007bff; /* Blue */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Selected Syllabus</h1>
+    <h2>Theory Courses:</h2>
+    <ul id="theory-list"></ul>
+
+    <h2>Lab Courses:</h2>
+    <ul id="lab-list"></ul>
+
+    <div class="back-link">
+        <a href="cse-syllabus.html">Back to Syllabus Selection</a>
+    </div>
+</div>
+
+<script>
+    // Retrieve selected courses from localStorage
+    const selectedCourses = JSON.parse(localStorage.getItem('selectedCourses'));
+
+    // Function to display courses
+    function displayCourses() {
+        const theoryList = document.getElementById('theory-list');
+        const labList = document.getElementById('lab-list');
+
+        if (selectedCourses) {
+            // Display theory courses
+            selectedCourses.theory.forEach(course => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <strong>${course}</strong><br>
+                    PDF: <a href="${selectedCourses.uploads[course].pdf}" target="_blank">${selectedCourses.uploads[course].pdf}</a><br>
+                    Video: <a href="${selectedCourses.uploads[course].video}" target="_blank">${selectedCourses.uploads[course].video}</a>
+                `;
+                theoryList.appendChild(listItem);
+            });
+
+            // Display lab courses
+            selectedCourses.labs.forEach(course => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <strong>${course}</strong><br>
+                    PDF: <a href="${selectedCourses.uploads[course].pdf}" target="_blank">${selectedCourses.uploads[course].pdf}</a><br>
+                    Video: <a href="${selectedCourses.uploads[course].video}" target="_blank">${selectedCourses.uploads[course].video}</a>
+                `;
+                labList.appendChild(listItem);
+            });
+        }
+    }
+
+    // Call the function to display courses
+    displayCourses();
+</script>
+
+</body>
+</html>

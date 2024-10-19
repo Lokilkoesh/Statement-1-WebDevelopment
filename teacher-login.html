@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe4e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fffaf0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label, input {
+            display: block;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Teacher Login</h2>
+    <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <div class="error" id="errorMsg">Incorrect email or password!</div>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const userData = localStorage.getItem('teacher_' + email);
+
+        const errorMsg = document.getElementById('errorMsg');
+
+        if (userData) {
+            const { password: storedPassword } = JSON.parse(userData);
+            if (storedPassword === password) {
+                alert('Teacher logged in successfully!');
+                window.location.href = 'teacher-dashboard.html'; // Redirect to teacher dashboard
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        } else {
+            errorMsg.style.display = 'block';
+        }
+    });
+</script>
+
+</body>
+</html>

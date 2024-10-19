@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Role</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe4e1; /* Light pink */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fffaf0; /* Cream */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select Your Role</h2>
+    <button onclick="goToLogin('student')">I am a Student</button>
+    <button onclick="goToLogin('teacher')">I am a Teacher</button>
+</div>
+
+<script>
+    function goToLogin(role) {
+        // Redirect to appropriate login page based on the role selected
+        if (role === 'student') {
+            window.location.href = 'student-login.html';
+        } else if (role === 'teacher') {
+            window.location.href = 'teacher-login.html';
+        }
+    }
+</script>
+
+</body>
+</html>

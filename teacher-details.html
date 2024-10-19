@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe4e1; /* Light Pink */
+        }
+
+        .container {
+            background-color: #fffaf0; /* Cream */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        label, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border: none;
+            background-color: #5cb85c;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Teacher Registration</h2>
+        <form id="teacherRegisterForm">
+
+            <label for="Teacher Name">Full Name:</label>
+            <input type="Text" id="Enter Name" required>
+
+            <label for="teacherUsername">Username:</label>
+            <input type="text" id="teacherUsername" required> 
+
+            <label for="Department">Email:</label>
+            <input type="Text" id="Department" required>
+
+            <label for="Number">Phone Number:</label>
+            <input type="Number" id="Enter Phone Number" required>
+
+            <label for="teacherEmail">Email:</label>
+            <input type="email" id="teacherEmail" required>
+
+            <label for="teacherPassword">Password:</label>
+            <input type="password" id="teacherPassword" required>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('teacherRegisterForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('teacherEmail').value;
+            const username = document.getElementById('teacherUsername').value;
+            const password = document.getElementById('teacherPassword').value;
+
+            localStorage.setItem('teacher_' + email, JSON.stringify({ username, password }));
+            alert('Teacher registered successfully! Redirecting to login...');
+            window.location.href = 'login.html';
+        });
+    </script>
+
+</body>
+</html>
